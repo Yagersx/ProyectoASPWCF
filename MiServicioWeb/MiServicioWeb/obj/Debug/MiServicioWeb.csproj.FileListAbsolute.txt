@@ -1,0 +1,10 @@
+F:\MiServicioWeb\MiServicioWeb\bin\MiServicioWeb.dll
+F:\MiServicioWeb\MiServicioWeb\bin\MiServicioWeb.pdb
+F:\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.csprojAssemblyReference.cache
+F:\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.csproj.CoreCompileInputs.cache
+F:\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.dll
+F:\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.pdb
+F:\MiServicioWeb\MiServicioWeb\bin\MiServicioWeb.dll.config
+F:\MiServicioWeb\MiServicioWeb\bin\Newtonsoft.Json.dll
+F:\MiServicioWeb\MiServicioWeb\bin\Newtonsoft.Json.xml
+F:\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.csproj.CopyComplete

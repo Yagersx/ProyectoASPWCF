@@ -1,0 +1,64 @@
+c:\users\pc01\documents\visual studio 2013\Projects\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+c:\users\pc01\documents\visual studio 2013\Projects\WebApplication1\WebApplication1\bin\WebApplication1.dll
+c:\users\pc01\documents\visual studio 2013\Projects\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+c:\users\pc01\documents\visual studio 2013\Projects\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.dll
+c:\users\pc01\documents\visual studio 2013\Projects\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.pdb
+c:\users\pc01\documents\visual studio 2013\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+c:\users\pc01\documents\visual studio 2013\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+c:\users\pc01\documents\visual studio 2013\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.dll
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.pdb
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\PC01\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\PC01\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll
+C:\Users\PC01\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+C:\Users\PC01\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.dll
+C:\Users\PC01\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.pdb
+C:\Users\PC01\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+C:\Users\PC01\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\PC01\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+E:\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Lanick\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\Lanick\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll
+C:\Users\Lanick\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+C:\Users\Lanick\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.dll
+C:\Users\Lanick\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.pdb
+C:\Users\Lanick\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache
+C:\Users\Lanick\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
+C:\Users\Lanick\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
+C:\Users\Lanick\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\Lanick\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\snake\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\snake\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll
+C:\Users\snake\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+C:\Users\snake\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.dll
+C:\Users\snake\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.pdb
+C:\Users\snake\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
+C:\Users\snake\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
+C:\Users\snake\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\snake\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\snake\Desktop\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache
+E:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+E:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll
+E:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+E:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.dll
+E:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.pdb
+E:\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.dll
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.dll
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\ClassRepasoAccesoDatos.pdb
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojAssemblyReference.cache
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.CopyComplete
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\Newtonsoft.Json.dll
+F:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\Newtonsoft.Json.xml

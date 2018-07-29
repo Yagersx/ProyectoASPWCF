@@ -1,0 +1,22 @@
+c:\users\pc01\documents\visual studio 2013\Projects\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\bin\Debug\ClassRepasoAccesoDatos.dll
+c:\users\pc01\documents\visual studio 2013\Projects\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\bin\Debug\ClassRepasoAccesoDatos.pdb
+c:\users\pc01\documents\visual studio 2013\Projects\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.csprojResolveAssemblyReference.cache
+c:\users\pc01\documents\visual studio 2013\Projects\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.dll
+c:\users\pc01\documents\visual studio 2013\Projects\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.pdb
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\bin\Debug\ClassRepasoAccesoDatos.dll
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\bin\Debug\ClassRepasoAccesoDatos.pdb
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.csprojResolveAssemblyReference.cache
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.dll
+E:\9no cuatrimestre\APLICACIONES WEB\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.pdb
+C:\Users\snake\Desktop\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\bin\Debug\ClassRepasoAccesoDatos.dll
+C:\Users\snake\Desktop\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\bin\Debug\ClassRepasoAccesoDatos.pdb
+C:\Users\snake\Desktop\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.csprojAssemblyReference.cache
+C:\Users\snake\Desktop\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.csproj.CoreCompileInputs.cache
+C:\Users\snake\Desktop\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.dll
+C:\Users\snake\Desktop\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.pdb
+E:\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\bin\Debug\ClassRepasoAccesoDatos.dll
+E:\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\bin\Debug\ClassRepasoAccesoDatos.pdb
+E:\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.csprojAssemblyReference.cache
+E:\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.csproj.CoreCompileInputs.cache
+E:\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.dll
+E:\RepasoAccesoDatos\ClassRepasoAccesoDatos\ClassRepasoAccesoDatos\obj\Debug\ClassRepasoAccesoDatos.pdb
