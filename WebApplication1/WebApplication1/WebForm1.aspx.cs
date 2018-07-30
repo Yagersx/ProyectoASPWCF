@@ -316,6 +316,11 @@ namespace WebApplication1
 
                 if (dt != null)
                 {
+                    ListItem li = new ListItem();
+                    li.Value = "";
+                    li.Text = "";
+                    DropDownList16.Items.Add(li);
+                    DropDownList13.Items.Add(li);
                     for (int x = 0; x < dt.Rows.Count; x++)
                     {
                         ListItem listItem = new ListItem();
@@ -324,7 +329,9 @@ namespace WebApplication1
 
                         DropDownList4.Items.Add(listItem);
                         DropDownList13.Items.Add(listItem);
+                        
                         DropDownList16.Items.Add(listItem);
+
                     }
                 }
 
@@ -373,11 +380,15 @@ namespace WebApplication1
                             listItem.Text = "";
                             DropDownList15.Items.Add(listItem);
                         }
+                        else
+                        {
+                            listItem.Value = dt.Rows[x-1]["IdAsesoria"].ToString();
+                            listItem.Text = dt.Rows[x-1]["Nombre"].ToString() + " " + dt.Rows[x-1]["Apellidos"].ToString() + " Cupo: " + dt.Rows[x-1]["Cupo"].ToString() + " de: " + dt.Rows[x-1]["HoraInicio"].ToString() + " a " + dt.Rows[x-1]["HoraFin"].ToString();
 
-                        listItem.Value = dt.Rows[x]["IdAsesoria"].ToString();
-                        listItem.Text = dt.Rows[x]["Nombre"].ToString() + " " + dt.Rows[x]["Apellidos"].ToString() + " Cupo: " + dt.Rows[x]["Cupo"].ToString()+ " de: " + dt.Rows[x]["HoraInicio"].ToString() + " a " + dt.Rows[x]["HoraFin"].ToString();
+                            DropDownList15.Items.Add(listItem);
+                        }
 
-                        DropDownList15.Items.Add(listItem);
+                        
                     }
                 }
 

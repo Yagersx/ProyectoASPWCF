@@ -185,5 +185,71 @@ namespace MiServicioWeb
 
             return exito;
         }
+
+        public bool EliminarAsesoria(Profesor p)
+        {
+            bool exito = false;
+
+            try
+            {
+                conexion.Open();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = conexion;
+                comando.CommandText = "DELETE FROM Asesorias WHERE IdAsesoria="+p.idprofesor+";";
+                int validacion = comando.ExecuteNonQuery();
+
+                if (validacion > 0)
+                {
+                    exito = true;
+
+                }
+                else
+                {
+                    exito = false;
+                }
+
+
+                conexion.Close();
+            }
+            catch (Exception x)
+            {
+                conexion.Close();
+            }
+
+            return exito;
+        }
+
+        public bool EliminarAA(Profesor p)
+        {
+            bool exito = false;
+
+            try
+            {
+                conexion.Open();
+                SqlCommand comando = new SqlCommand();
+                comando.Connection = conexion;
+                comando.CommandText = "DELETE FROM AA WHERE IdAA="+p.idprofesor+";";
+                int validacion = comando.ExecuteNonQuery();
+
+                if (validacion > 0)
+                {
+                    exito = true;
+
+                }
+                else
+                {
+                    exito = false;
+                }
+
+
+                conexion.Close();
+            }
+            catch (Exception x)
+            {
+                conexion.Close();
+            }
+
+            return exito;
+        }
     }
 }

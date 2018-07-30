@@ -44,6 +44,17 @@ namespace MiServicioWeb
         string MH(Profesor p);
 
         [OperationContract]
+        [WebInvoke(Method = "POST",
+            ResponseFormat = WebMessageFormat.Json,
+                    BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "EliminarAsesoria")]
+        bool EliminarAsesoria(Profesor p);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json,
+                    BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "EliminarAA")]
+        bool EliminarAA(Profesor p);
+
+        [OperationContract]
         [WebGet( ResponseFormat = WebMessageFormat.Json)]
         double Operacion();
 

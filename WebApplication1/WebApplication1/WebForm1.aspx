@@ -372,16 +372,16 @@
                 e.preventDefault();
                 var p = new Object();
                 p.idprofesor = parseInt($('#DropDownList16').val());
-                p = JSON.stringify(p);
+                    p = JSON.stringify(p);
                 
-                $.ajax({
-                    url: 'http://localhost:49849/Service1.svc/AsesoriasProfesor',
-                    type: 'POST',
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    processData: false,
-                    data: p,
-	            })
+                    $.ajax({
+                        url: 'http://localhost:49849/Service1.svc/AsesoriasProfesor',
+                        type: 'POST',
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        processData: false,
+                        data: p,
+	                })
                     .done(function (respuesta) {
                         var json= JSON.parse(respuesta);
                     console.log(json.html);
@@ -392,20 +392,23 @@
                                 console.log(elemento);
                                 html += "<option value='" + elemento.IdAsesoria + "'>Dia: " + elemento.Dia1 + " De: " + elemento.HoraInicio + " a " + elemento.HoraFin + "</option>";
                             });
+                            
+                            console.log(html);
+                            $('#cmbAsesoria').html(html);
+                            $('#cmbAsesoria').removeAttr('disabled','disabled');
                         }
                         else
                         {
-                            swal('Ups!','No hay asesorias para este profesor!','warning');
+                            swal('Ups!', 'No hay asesorias para este profesor!', 'warning');
+                            $('#cmbAsesoria').attr('disabled','disabled');
+                            $('#table').html("");
                         }
 
-                        console.log(html);
-                        $('#cmbAsesoria').html(html);
-                        $('#cmbAsesoria').removeAttr('disabled','disabled');
-	            })
+	                })
                     .fail(function (error) {
                     swal('Oh No!','Algo Ocurrio!','warning');
 		            console.log(error);
-	            });
+	                });
 
             });
 
@@ -424,7 +427,7 @@
 	            })
                     .done(function (respuesta) {
                       var json= JSON.parse(respuesta);
-                        var html = '<button class="btn btn-primary btn-block mb-4 mt-4" type="button" id="cancelar-asesoria">Cancelar Asesoria</button><table class="table table-striped table-hover text-center" id="tbl"  width="100%"><thead class="thead-light"> <tr><th >IdAA</th><th >Matricula</th><th >Nombre</th><th >Tema</th><th>Accion</th></tr></thead><tbody>';
+                        var html = '<button class="btn btn-primary btn-block mb-4 mt-4" type="button" id="cancelar-asesoria" value="'+$('#cmbAsesoria').val()+'">Cancelar Asesoria</button><table class="table table-striped table-hover text-center" id="tbl"  width="100%"><thead class="thead-light"> <tr><th >IdAA</th><th >Matricula</th><th >Nombre</th><th >Tema</th><th>Accion</th></tr></thead><tbody>';
                         if (json!=null && json.exito==true)
                         {
                             json.html.forEach(function (elemento) {
@@ -439,14 +442,60 @@
 
                         $('.btn-eliminar-alumno').on('click', function (e) {
                                 e.preventDefault();
-                                var aa = this.value;
-                                swal('Eliminado!','Se elimino correctamente','success');
+
+                                var p = new Object();
+                                p.idprofesor = this.value;
+                                    p = JSON.stringify(p);
+                
+                                    $.ajax({
+                                        url: 'http://localhost:49849/Service1.svc/EliminarAA',
+                                        type: 'POST',
+                                        contentType: 'application/json; charset=utf-8',
+                                        dataType: 'json',
+                                        processData: false,
+                                        data: p,
+	                                })
+                                    .done(function (respuesta) {
+                                        console.log(respuesta);
+                                        
+                                        swal('Eliminado!', 'Se elimino correctamente, se recargara la tabla', 'success');
+                                         $('#cmbAsesoria').change();
+	                                })
+                                    .fail(function (error) {
+                                        swal('Oh No!','Algo Ocurrio!','warning');
+		                                console.log(error);
+	                                });
+
                             });
 
                         $('#cancelar-asesoria').on('click', function (e) {
                             e.preventDefault();
-                            var aa = this.value;
-                            swal('Exito!','Se ha cancelado la asesoria','success');
+                            
+                                var p = new Object();
+                                p.idprofesor = this.value;
+                                    p = JSON.stringify(p);
+                                    console.log(p);
+                                    $.ajax({
+                                        url: 'http://localhost:49849/Service1.svc/EliminarAsesoria',
+                                        type: 'POST',
+                                        contentType: 'application/json; charset=utf-8',
+                                        dataType: 'json',
+                                        processData: false,
+                                        data: p,
+	                                })
+                                    .done(function (respuesta) {
+                                        console.log(respuesta);
+                                        $("#DropDownList16").val($("#DropDownList16 option:first").val());
+                                        $('#cmbAsesoria').attr('disabled', 'disabled');
+                                        $('#cmbAsesoria').html("");
+                                        $('#table').html("");
+                                        swal('Eliminado!', 'Se elimino correctamente', 'success');
+                                        
+	                                })
+                                    .fail(function (error) {
+                                        swal('Oh No!','Algo Ocurrio!','warning');
+		                                console.log(error);
+	                                });
                         });
                     
 	            })

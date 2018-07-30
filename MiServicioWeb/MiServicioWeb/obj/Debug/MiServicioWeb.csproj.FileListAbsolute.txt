@@ -8,3 +8,13 @@ F:\MiServicioWeb\MiServicioWeb\bin\MiServicioWeb.dll.config
 F:\MiServicioWeb\MiServicioWeb\bin\Newtonsoft.Json.dll
 F:\MiServicioWeb\MiServicioWeb\bin\Newtonsoft.Json.xml
 F:\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.csproj.CopyComplete
+F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\bin\MiServicioWeb.dll.config
+F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\bin\MiServicioWeb.dll
+F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\bin\MiServicioWeb.pdb
+F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\bin\Newtonsoft.Json.dll
+F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\bin\Newtonsoft.Json.xml
+F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.csprojAssemblyReference.cache
+F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.csproj.CoreCompileInputs.cache
+F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.csproj.CopyComplete
+F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.dll
+F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.pdb
