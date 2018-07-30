@@ -270,8 +270,7 @@ namespace WebApplication1
             string asignaciones = "SELECT A.IdAsignacion, M.Nombre as Materia, g.Grado, G.Letra, G.Nivel, P.Nombre  FROM Asignacion as A INNER JOIN Grupo as G on G.IdGrupo = A.IdGrupo INNER JOIN Materia as M ON M.IdMateria = A.IdMateria INNER JOIN Profesor as P on P.IdProfesor = A.IdProfesor";
             string horas = "SELECT * FROM Hora;";
             string dias = "SELECT * FROM Dias;";
-            string asesorias = "SELECT * FROM Asesorias as A INNER JOIN Dias as D ON D.IdDia= A.Dia INNER JOIN Hora as H ON H.IdHora= A.IdHora INNER JOIN Profesor as P ON P.IdProfesor=A.IdProfesor;";
-
+            
             SqlConnection ctemp = null;
 
             ctemp = miClase.AbrirConexion(ref msj);
@@ -321,6 +320,7 @@ namespace WebApplication1
                     li.Text = "";
                     DropDownList16.Items.Add(li);
                     DropDownList13.Items.Add(li);
+                    DropDownList17.Items.Add(li);
                     for (int x = 0; x < dt.Rows.Count; x++)
                     {
                         ListItem listItem = new ListItem();
@@ -329,8 +329,9 @@ namespace WebApplication1
 
                         DropDownList4.Items.Add(listItem);
                         DropDownList13.Items.Add(listItem);
-                        
                         DropDownList16.Items.Add(listItem);
+
+                        DropDownList17.Items.Add(listItem);
 
                     }
                 }
@@ -365,32 +366,7 @@ namespace WebApplication1
                     }
                 }
 
-                ds = miClase.QueryDataSet(asesorias, ctemp, ref msj);
-                dt = ds.Tables[0];
-
-                if (dt != null)
-                {
-                    for (int x = 0; x < dt.Rows.Count; x++)
-                    {
-                        ListItem listItem = new ListItem();
-
-                        if (x==0)
-                        {
-                            listItem.Value = "";
-                            listItem.Text = "";
-                            DropDownList15.Items.Add(listItem);
-                        }
-                        else
-                        {
-                            listItem.Value = dt.Rows[x-1]["IdAsesoria"].ToString();
-                            listItem.Text = dt.Rows[x-1]["Nombre"].ToString() + " " + dt.Rows[x-1]["Apellidos"].ToString() + " Cupo: " + dt.Rows[x-1]["Cupo"].ToString() + " de: " + dt.Rows[x-1]["HoraInicio"].ToString() + " a " + dt.Rows[x-1]["HoraFin"].ToString();
-
-                            DropDownList15.Items.Add(listItem);
-                        }
-
-                        
-                    }
-                }
+                
 
                 ds = miClase.QueryDataSet(horas, ctemp, ref msj);
                 dt = ds.Tables[0];

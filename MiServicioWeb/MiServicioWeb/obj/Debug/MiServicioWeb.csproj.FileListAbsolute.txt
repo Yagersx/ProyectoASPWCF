@@ -18,3 +18,11 @@ F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.csproj.
 F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.csproj.CopyComplete
 F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.dll
 F:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.pdb
+E:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.csprojResolveAssemblyReference.cache
+E:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.dll
+E:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\obj\Debug\MiServicioWeb.pdb
+E:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\bin\MiServicioWeb.dll.config
+E:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\bin\MiServicioWeb.dll
+E:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\bin\MiServicioWeb.pdb
+E:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\bin\Newtonsoft.Json.dll
+E:\RepasoAccesoDatos\MiServicioWeb\MiServicioWeb\bin\Newtonsoft.Json.xml

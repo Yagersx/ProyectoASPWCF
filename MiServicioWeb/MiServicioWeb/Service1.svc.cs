@@ -25,23 +25,35 @@ namespace MiServicioWeb
         public bool AgregarAsesoria(Asesoria a)
         {
             bool exito = false;
-
+            string consulta = "SELECT * FROM Asignacion as A INNER JOIN Horario as H on H.IdAsignacion= A.IdAsignacion INNER JOIN Hora AS Ho ON Ho.IdHora= H.IdHora WHERE A.IdProfesor="+a.Idprofesor+" AND Ho.IdHora="+a.Idhora+" AND H.IdDia="+a.Dia+";";
+            string consulta2 = "SELECT * FROM Asesorias as A INNER JOIN Hora as H on H.IdHora= A.IdHora WHERE A.IdProfesor="+a.Idprofesor+" AND H.IdHora="+a.Idhora+" AND A.Dia="+a.Dia+";";
             try
             {
                 conexion.Open();
-                SqlCommand comando = new SqlCommand();
-                comando.Connection = conexion;
-                comando.CommandText = "INSERT INTO Asesorias values(" + a.Idprofesor +"," + a.Cupo +"," + a.Dia + "," + a.Idhora +" )";
-                int validacion= comando.ExecuteNonQuery();
-
-                if(validacion>0)
+                DataSet ds = QueryDataSet(consulta, conexion);
+                DataSet ds2 = QueryDataSet(consulta2, conexion);
+                if (ds.Tables[0].Rows.Count > 0 || ds2.Tables[0].Rows.Count>0)
                 {
-                    exito = true;
-
+                    conexion.Close();
+                    return false;
                 }
                 else
                 {
-                    exito = false;
+                    SqlCommand comando = new SqlCommand();
+                    comando.Connection = conexion;
+                    comando.CommandText = "INSERT INTO Asesorias values(" + a.Idprofesor + "," + a.Cupo + "," + a.Dia + "," + a.Idhora + " )";
+                    int validacion = comando.ExecuteNonQuery();
+
+                    if (validacion > 0)
+                    {
+                        exito = true;
+
+                    }
+                    else
+                    {
+                        conexion.Close();
+                        exito = false;
+                    }
                 }
 
 
@@ -156,23 +168,35 @@ namespace MiServicioWeb
         public bool AgregarInscripcion(AA a)
         {
             bool exito = false;
+            string consulta = "SELECT * FROM Asesorias as A INNER JOIN AA AS AA ON AA.IdAsesoria= A.IdAsesoria INNER JOIN Hora as H on H.IdHora= A.IdHora WHERE AA.Matricula="+a.Matricula+" AND H.IdHora=(SELECT IdHora from Asesorias as A WHERE A.IdAsesoria="+a.Idasesoria+") AND A.Dia=(SELECT Dia from Asesorias as A WHERE A.IdAsesoria="+a.Idasesoria+");";
 
             try
             {
                 conexion.Open();
-                SqlCommand comando = new SqlCommand();
-                comando.Connection = conexion;
-                comando.CommandText = "INSERT INTO AA values(" + a.Idasesoria + "," + a.Matricula + ",'" + a.Nombre + "','" + a.Tema + "')";
-                int validacion = comando.ExecuteNonQuery();
+                DataSet ds = QueryDataSet(consulta, conexion);
 
-                if (validacion > 0)
+                if (ds.Tables[0].Rows.Count > 0 )
                 {
-                    exito = true;
-
+                    conexion.Close();
+                    return false;
                 }
                 else
                 {
-                    exito = false;
+                    SqlCommand comando = new SqlCommand();
+                    comando.Connection = conexion;
+                    comando.CommandText = "INSERT INTO AA values(" + a.Idasesoria + "," + a.Matricula + ",'" + a.Nombre + "','" + a.Tema + "')";
+                    int validacion = comando.ExecuteNonQuery();
+
+                    if (validacion > 0)
+                    {
+                        exito = true;
+
+                    }
+                    else
+                    {
+                        conexion.Close();
+                        exito = false;
+                    }
                 }
 
 

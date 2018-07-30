@@ -62,3 +62,5 @@ F:\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.d
 F:\RepasoAccesoDatos\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
 F:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\Newtonsoft.Json.dll
 F:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\Newtonsoft.Json.xml
+E:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\Newtonsoft.Json.dll
+E:\RepasoAccesoDatos\WebApplication1\WebApplication1\bin\Newtonsoft.Json.xml

@@ -183,10 +183,14 @@ namespace MiServicioWeb
           set { dia = value; }
         }
 
-        [DataMember]
-        public int Idhora { get => idhora; set => idhora = value; }
-
         int idhora;
+
+        [DataMember]
+        public int Idhora
+        {
+          get { return idhora; }
+          set { idhora = value; }
+        }
 
         
         

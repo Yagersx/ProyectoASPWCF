@@ -235,9 +235,16 @@
                                 <div class="tab-pane fade" id="add_inscripcion" role="tabpanel" >
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>Selecciona un Horario de Asesoria</label>
-                                                <asp:DropDownList ID="DropDownList15" runat="server" AutoPostBack="False" CssClass="form-control">
+                                                <label>Maestro</label>
+                                                <asp:DropDownList ID="DropDownList17" runat="server" AutoPostBack="False" CssClass="form-control">
                                                 </asp:DropDownList>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Selecciona un Horario de Asesoria</label>
+                                                <select disabled="disabled" class="form-control" id="cmbAsesoriaInscripcion">
+                                                    <option></option>
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
@@ -327,8 +334,17 @@
 		            data: asesoria,
 	            })
 	            .done(function(respuesta) {
-                    console.log(respuesta); 
-                    swal('Hurray!','Exito al Agregar la Asesoria!','success');
+	                console.log(respuesta);
+	                if (respuesta==true)
+	                {
+
+	                    swal('Hurray!', 'Exito al Agregar la Asesoria!', 'success');
+	                }
+	                else
+	                {
+
+	                    swal('Espera!', 'Parece que ya existe en la BD o No se pudo agregar!', 'info');
+	                }
 	            })
                     .fail(function (error) {
                     swal('Oh No!','Algo Ocurrio!','warning');
@@ -341,7 +357,7 @@
                 e.preventDefault();
 
                 var asesoria = new Object();
-                asesoria.Idasesoria = $('#DropDownList15').val();
+                asesoria.Idasesoria = $('#cmbAsesoriaInscripcion').val();
                 asesoria.Matricula =$('#matricula').val() ;
                 asesoria.Nombre =$('#nombre').val() ;
                 asesoria.Tema =$('#tema').val() ;
@@ -358,8 +374,24 @@
 		            data: asesoria,
 	            })
 	            .done(function(respuesta) {
-                    console.log(respuesta); 
-                    swal('Hurray!','Exito al Agregar!','success');
+	                console.log(respuesta);
+	                
+
+	                if(respuesta==true){
+	                    
+	                    swal('Hurray!', 'Exito al Agregar!', 'success');
+	                }
+                    else
+                    {
+	                    swal('Espera!', 'Parece que ya existe en la BD o No se pudo agregar!', 'info');
+	                }
+
+	                $("#DropDownList17").val($("#DropDownList17 option:first").val());
+	                $('#cmbAsesoriaInscripcion').attr('disabled', 'disabled');
+	                $('#cmbAsesoriaInscripcion').html("");
+	                $('#matricula').val("");
+	                $('#nombre').val("");
+	                $('#tema').val("");
 	            })
                     .fail(function (error) {
                     swal('Oh No!','Algo Ocurrio!','warning');
@@ -409,6 +441,48 @@
                     swal('Oh No!','Algo Ocurrio!','warning');
 		            console.log(error);
 	                });
+
+            });
+
+            $('#DropDownList17').on('change', function (e) {
+                e.preventDefault();
+                var p = new Object();
+                p.idprofesor = parseInt($('#DropDownList17').val());
+                p = JSON.stringify(p);
+
+                $.ajax({
+                    url: 'http://localhost:49849/Service1.svc/AsesoriasProfesor',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    processData: false,
+                    data: p,
+                })
+                .done(function (respuesta) {
+                    var json = JSON.parse(respuesta);
+                    console.log(json.html);
+                    var html = "<option></option>";
+
+                    if (json != null && json.exito == true) {
+                        json.html.forEach(function (elemento) {
+                            console.log(elemento);
+                            html += "<option value='" + elemento.IdAsesoria + "'>Dia: " + elemento.Dia1 + " De: " + elemento.HoraInicio + " a " + elemento.HoraFin + "</option>";
+                        });
+
+                        console.log(html);
+                        $('#cmbAsesoriaInscripcion').html(html);
+                        $('#cmbAsesoriaInscripcion').removeAttr('disabled', 'disabled');
+                    }
+                    else {
+                        swal('Ups!', 'No hay asesorias para este profesor!', 'warning');
+                        $('#cmbAsesoriaInscripcion').attr('disabled', 'disabled');
+                    }
+
+                })
+                .fail(function (error) {
+                    swal('Oh No!', 'Algo Ocurrio!', 'warning');
+                    console.log(error);
+                });
 
             });
 
