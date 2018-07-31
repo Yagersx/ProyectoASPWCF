@@ -292,7 +292,6 @@ namespace WebApplication1
 
                         DropDownList1.Items.Add(listItem);
                         DropDownList2.Items.Add(listItem);
-                        DropDownList6.Items.Add(listItem);
                     }
                 }
 
@@ -341,6 +340,8 @@ namespace WebApplication1
 
                 if (dt != null)
                 {
+
+
                     for (int x = 0; x < dt.Rows.Count; x++)
                     {
                         ListItem listItem = new ListItem();
@@ -348,6 +349,9 @@ namespace WebApplication1
                         listItem.Text = dt.Rows[x]["Nombre"].ToString();
 
                         DropDownList5.Items.Add(listItem);
+                        DropDownList6.Items.Add(listItem);
+                        DropDownList15.Items.Add(listItem);
+                        DropDownList19.Items.Add(listItem);
                     }
                 }
 

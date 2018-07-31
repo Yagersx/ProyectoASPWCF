@@ -152,11 +152,7 @@
                                     </div>
                                 <div class="tab-pane fade" id="add_horario" role="tabpanel" aria-labelledby="add_horario">
                                         <div class="col-lg-12">
-                                            <!--<div class="form-group">
-                                                <label>Selecciona un Grupo</label>
-                                                <asp:DropDownList ID="DropDownList6" runat="server" AutoPostBack="False" CssClass="form-control">
-                                                </asp:DropDownList>
-                                            </div>-->
+                                            
                                             <div class="form-group">
                                                 <label>Selecciona una Asignacion</label>
                                                 <asp:DropDownList ID="DropDownList7" runat="server" AutoPostBack="False" CssClass="form-control">
@@ -202,10 +198,24 @@
                                     
                                         <div class="col-lg-12">
                                             <div class="form-group">
+                                                <label>Selecciona un Periodo o Cuatrimestre</label>
+                                                <asp:DropDownList ID="DropDownList6" runat="server" AutoPostBack="False" CssClass="form-control">
+                                                </asp:DropDownList>
+                                            </div>
+
+                                            <div class="form-group">
                                                 <label>Maestro</label>
                                                 <asp:DropDownList ID="DropDownList13" runat="server" AutoPostBack="False" CssClass="form-control">
                                                 </asp:DropDownList>
                                             </div>
+
+                                            <div class="form-group">
+                                                <label>Materia</label>
+                                                <select disabled="disabled" class="form-control" id="cmbMateriaAsignacion">
+                                                    <option></option>
+                                                </select>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label>Cupo</label>
                                                 <input type="text" id="Cupo" value="" class="form-control"/>
@@ -235,9 +245,22 @@
                                 <div class="tab-pane fade" id="add_inscripcion" role="tabpanel" >
                                         <div class="col-lg-12">
                                             <div class="form-group">
+                                                <label>Selecciona un Periodo o Cuatrimestre</label>
+                                                <asp:DropDownList ID="DropDownList15" runat="server" AutoPostBack="False" CssClass="form-control">
+                                                </asp:DropDownList>
+                                            </div>
+
+                                            <div class="form-group">
                                                 <label>Maestro</label>
                                                 <asp:DropDownList ID="DropDownList17" runat="server" AutoPostBack="False" CssClass="form-control">
                                                 </asp:DropDownList>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Materia</label>
+                                                <select disabled="disabled" class="form-control" id="cmbMateriaAsesoria">
+                                                    <option></option>
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
@@ -270,9 +293,21 @@
                                 <div class="tab-pane fade" id="m_asesoria" role="tabpanel" >
                                         <div class="col-lg-12">
                                             <div class="form-group">
+                                                <label>Selecciona un Periodo o Cuatrimestre</label>
+                                                <asp:DropDownList ID="DropDownList19" runat="server" AutoPostBack="False" CssClass="form-control">
+                                                </asp:DropDownList>
+                                            </div>
+                                            <div class="form-group">
                                                 <label>Selecciona un Profesor</label>
                                                 <asp:DropDownList ID="DropDownList16" runat="server" AutoPostBack="False" CssClass="form-control">
                                                 </asp:DropDownList>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Materia</label>
+                                                <select disabled="disabled" class="form-control" id="cmbMateriaMA">
+                                                    <option></option>
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
@@ -281,6 +316,7 @@
                                                     <option></option>
                                                 </select>
                                             </div>
+
 
                                             <div id="table">
 
@@ -317,7 +353,10 @@
                 e.preventDefault();
 
                 var asesoria = new Object();
-                asesoria.Idprofesor = $('#DropDownList13').val();
+                //el idprofesor es idasesoria
+                asesoria.Idcuatri = $('#DropDownList6').val();
+                asesoria.Idprofesor =$('#DropDownList13').val();
+                asesoria.Idasignacion =$('#cmbMateriaAsignacion').val();
                 asesoria.Cupo =$('#Cupo').val() ;
                 asesoria.Dia =$('#DropDownList14').val() ;
                 asesoria.Idhora = $('#Hora').val();
@@ -362,8 +401,8 @@
                 asesoria.Nombre =$('#nombre').val() ;
                 asesoria.Tema =$('#tema').val() ;
             
-                    asesoria = JSON.stringify(asesoria);
-                    console.log(asesoria);
+                asesoria = JSON.stringify(asesoria);
+                console.log(asesoria);
 
                 $.ajax({
 		            url: 'http://localhost:49849/Service1.svc/AgregarInscripcion',
@@ -386,7 +425,10 @@
 	                    swal('Espera!', 'Parece que ya existe en la BD o No se pudo agregar!', 'info');
 	                }
 
-	                $("#DropDownList17").val($("#DropDownList17 option:first").val());
+                    $("#DropDownList15").val($("#DropDownList15 option:first").val());
+                    $("#DropDownList17").val($("#DropDownList17 option:first").val());
+                    $('#cmbMateriaAsesoria').attr('disabled', 'disabled');
+	                $('#cmbMateriaAsesoria').html("");
 	                $('#cmbAsesoriaInscripcion').attr('disabled', 'disabled');
 	                $('#cmbAsesoriaInscripcion').html("");
 	                $('#matricula').val("");
@@ -403,51 +445,185 @@
             $('#DropDownList16').on('change', function (e) {
                 e.preventDefault();
                 var p = new Object();
-                p.idprofesor = parseInt($('#DropDownList16').val());
-                    p = JSON.stringify(p);
-                
-                    $.ajax({
-                        url: 'http://localhost:49849/Service1.svc/AsesoriasProfesor',
-                        type: 'POST',
-                        contentType: 'application/json; charset=utf-8',
-                        dataType: 'json',
-                        processData: false,
-                        data: p,
-	                })
-                    .done(function (respuesta) {
-                        var json= JSON.parse(respuesta);
+                p.Profesor = parseInt($('#DropDownList16').val());
+                p.Cuatrimestre = $('#DropDownList19').val();
+                p = JSON.stringify(p);
+
+                $.ajax({
+                    url: 'http://localhost:49849/Service1.svc/MateriasProfesor',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    processData: false,
+                    data: p,
+                })
+                .done(function (respuesta) {
+                    
+                   
+                    var json = JSON.parse(respuesta);
                     console.log(json.html);
                     var html = "<option></option>";
 
-                        if (json != null && json.exito == true) {
-                            json.html.forEach(function (elemento) {
-                                console.log(elemento);
-                                html += "<option value='" + elemento.IdAsesoria + "'>Dia: " + elemento.Dia1 + " De: " + elemento.HoraInicio + " a " + elemento.HoraFin + "</option>";
-                            });
-                            
-                            console.log(html);
-                            $('#cmbAsesoria').html(html);
-                            $('#cmbAsesoria').removeAttr('disabled','disabled');
-                        }
-                        else
-                        {
-                            swal('Ups!', 'No hay asesorias para este profesor!', 'warning');
-                            $('#cmbAsesoria').attr('disabled','disabled');
-                            $('#table').html("");
-                        }
+                    if (json != null && json.exito == true) {
+                        json.html.forEach(function (elemento) {
+                            console.log(elemento);
+                            html += "<option value='" + elemento.IdAsignacion + "'>"+elemento.Materia+"</option>";
+                        });
 
-	                })
-                    .fail(function (error) {
-                    swal('Oh No!','Algo Ocurrio!','warning');
-		            console.log(error);
-	                });
+                        console.log(html);
+                        $('#cmbMateriaMA').html(html);
+                        $('#cmbMateriaMA').removeAttr('disabled', 'disabled');
+                    }
+                    else {
+                        swal('Ups!', 'No hay materias para este profesor!', 'warning');
+                        $('#cmbMateriaMA').attr('disabled', 'disabled');
+                    }
+
+                })
+                .fail(function (error) {
+                    swal('Oh No!', 'Algo Ocurrio!', 'warning');
+                    console.log(error);
+                });
 
             });
 
+            $('#cmbMateriaMA').on('change', function (e) {
+                e.preventDefault();
+                var p = new Object();
+                p.idprofesor = parseInt($('#cmbMateriaMA').val());
+                p = JSON.stringify(p);
+
+                $.ajax({
+                    url: 'http://localhost:49849/Service1.svc/AsesoriasProfesor',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    processData: false,
+                    data: p,
+                })
+                .done(function (respuesta) {
+                    var json = JSON.parse(respuesta);
+                    console.log(json.html);
+                    var html = "<option></option>";
+
+                    if (json != null && json.exito == true) {
+                        json.html.forEach(function (elemento) {
+                            console.log(elemento);
+                            html += "<option value='" + elemento.IdAsesoria + "'>Dia: " + elemento.Dia1 + " De: " + elemento.HoraInicio + " a " + elemento.HoraFin + "</option>";
+                        });
+
+                        console.log(html);
+                        $('#cmbAsesoria').html(html);
+                        $('#cmbAsesoria').removeAttr('disabled', 'disabled');
+                    }
+                    else {
+                        swal('Ups!', 'No hay asesorias para este profesor!', 'warning');
+                        $('#cmbAsesoria').attr('disabled', 'disabled');
+                    }
+
+                })
+                .fail(function (error) {
+                    swal('Oh No!', 'Algo Ocurrio!', 'warning');
+                    console.log(error);
+                });
+
+            });
+
+            $('#DropDownList13').on('change', function (e) {
+                e.preventDefault();
+                var p = new Object();
+                p.Profesor = parseInt($('#DropDownList13').val());
+                p.Cuatrimestre = $('#DropDownList6').val();
+                p = JSON.stringify(p);
+
+                $.ajax({
+                    url: 'http://localhost:49849/Service1.svc/MateriasProfesor',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    processData: false,
+                    data: p,
+                })
+                .done(function (respuesta) {
+                    
+                   
+                    var json = JSON.parse(respuesta);
+                    console.log(json.html);
+                    var html = "<option></option>";
+
+                    if (json != null && json.exito == true) {
+                        json.html.forEach(function (elemento) {
+                            console.log(elemento);
+                            html += "<option value='" + elemento.IdAsignacion + "'>"+elemento.Materia+"</option>";
+                        });
+
+                        console.log(html);
+                        $('#cmbMateriaAsignacion').html(html);
+                        $('#cmbMateriaAsignacion').removeAttr('disabled', 'disabled');
+                    }
+                    else {
+                        swal('Ups!', 'No hay materias para este profesor!', 'warning');
+                        $('#cmbMateriaAsignacion').attr('disabled', 'disabled');
+                    }
+
+                })
+                .fail(function (error) {
+                    swal('Oh No!', 'Algo Ocurrio!', 'warning');
+                    console.log(error);
+                });
+
+            });
+
+            
             $('#DropDownList17').on('change', function (e) {
                 e.preventDefault();
                 var p = new Object();
-                p.idprofesor = parseInt($('#DropDownList17').val());
+                p.Profesor = parseInt($('#DropDownList17').val());
+                p.Cuatrimestre = $('#DropDownList15').val();
+                p = JSON.stringify(p);
+
+                $.ajax({
+                    url: 'http://localhost:49849/Service1.svc/MateriasProfesor',
+                    type: 'POST',
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    processData: false,
+                    data: p,
+                })
+                .done(function (respuesta) {
+                    
+                   
+                    var json = JSON.parse(respuesta);
+                    console.log(json.html);
+                    var html = "<option></option>";
+
+                    if (json != null && json.exito == true) {
+                        json.html.forEach(function (elemento) {
+                            console.log(elemento);
+                            html += "<option value='" + elemento.IdAsignacion + "'>"+elemento.Materia+"</option>";
+                        });
+
+                        console.log(html);
+                        $('#cmbMateriaAsesoria').html(html);
+                        $('#cmbMateriaAsesoria').removeAttr('disabled', 'disabled');
+                    }
+                    else {
+                        swal('Ups!', 'No hay materias para este profesor!', 'warning');
+                        $('#cmbMateriaAsesoria').attr('disabled', 'disabled');
+                    }
+
+                })
+                .fail(function (error) {
+                    swal('Oh No!', 'Algo Ocurrio!', 'warning');
+                    console.log(error);
+                });
+
+            });
+
+            $('#cmbMateriaAsesoria').on('change', function (e) {
+                e.preventDefault();
+                var p = new Object();
+                p.idprofesor = parseInt($('#cmbMateriaAsesoria').val());
                 p = JSON.stringify(p);
 
                 $.ajax({
@@ -485,6 +661,7 @@
                 });
 
             });
+
 
             $('#cmbAsesoria').on('change', function (e) {
                 e.preventDefault();

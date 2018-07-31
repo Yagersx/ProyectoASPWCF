@@ -40,6 +40,12 @@ namespace MiServicioWeb
         [OperationContract]
         [WebInvoke(Method = "POST",
                     ResponseFormat = WebMessageFormat.Json,
+                    BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "MateriasProfesor")]
+        string MateriasProfesor(CP m);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+                    ResponseFormat = WebMessageFormat.Json,
                     BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "MostrarAsesorias")]
         string MH(Profesor p);
 
@@ -80,6 +86,22 @@ namespace MiServicioWeb
         public Person()
         {
             
+        }
+    }
+
+    [DataContract]
+    public class CP
+    {
+        [DataMember]
+        public int Cuatrimestre { get; set; }
+
+        [DataMember]
+        public string Profesor { get; set; }
+        
+
+        public CP()
+        {
+
         }
     }
 
@@ -158,6 +180,15 @@ namespace MiServicioWeb
     [DataContract]
     public class Asesoria
     {
+        int idcuatri;
+
+        [DataMember]
+        public int Idcuatri
+        {
+            get { return idcuatri; }
+            set { idcuatri = value; }
+        }
+
         int idprofesor;
 
         [DataMember]
@@ -166,6 +197,16 @@ namespace MiServicioWeb
           get { return idprofesor; }
           set { idprofesor = value; }
         }
+
+        int idasignacion;
+
+        [DataMember]
+        public int Idasignacion
+        {
+            get { return idasignacion; }
+            set { idasignacion = value; }
+        }
+
         int cupo;
 
         [DataMember]

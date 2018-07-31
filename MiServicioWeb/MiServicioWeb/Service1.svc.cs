@@ -26,7 +26,7 @@ namespace MiServicioWeb
         {
             bool exito = false;
             string consulta = "SELECT * FROM Asignacion as A INNER JOIN Horario as H on H.IdAsignacion= A.IdAsignacion INNER JOIN Hora AS Ho ON Ho.IdHora= H.IdHora WHERE A.IdProfesor="+a.Idprofesor+" AND Ho.IdHora="+a.Idhora+" AND H.IdDia="+a.Dia+";";
-            string consulta2 = "SELECT * FROM Asesorias as A INNER JOIN Hora as H on H.IdHora= A.IdHora WHERE A.IdProfesor="+a.Idprofesor+" AND H.IdHora="+a.Idhora+" AND A.Dia="+a.Dia+";";
+            string consulta2 = "SELECT * FROM Asesorias as A INNER JOIN Hora as H on H.IdHora= A.IdHora WHERE A.IdAsignacion="+a.Idasignacion+" AND H.IdHora="+a.Idhora+" AND A.Dia="+a.Dia+";";
             try
             {
                 conexion.Open();
@@ -41,7 +41,7 @@ namespace MiServicioWeb
                 {
                     SqlCommand comando = new SqlCommand();
                     comando.Connection = conexion;
-                    comando.CommandText = "INSERT INTO Asesorias values(" + a.Idprofesor + "," + a.Cupo + "," + a.Dia + "," + a.Idhora + " )";
+                    comando.CommandText = "INSERT INTO Asesorias values(" + a.Idasignacion+ "," + a.Cupo + "," + a.Dia + "," + a.Idhora + " )";
                     int validacion = comando.ExecuteNonQuery();
 
                     if (validacion > 0)
@@ -105,7 +105,7 @@ namespace MiServicioWeb
 
         public string AsesoriasProfesor(Profesor p)
         {
-            string consulta = "SELECT * FROM Asesorias as A INNER JOIN Dias as D ON D.IdDia= A.Dia INNER JOIN Hora as H ON H.IdHora= A.IdHora WHERE A.IdProfesor=" + p.idprofesor + " ;";
+            string consulta = "SELECT * FROM Asesorias as A INNER JOIN Dias as D ON D.IdDia= A.Dia INNER JOIN Hora as H ON H.IdHora= A.IdHora WHERE A.IdAsignacion=" + p.idprofesor + " ;";
             Respuesta respuesta = new Respuesta();
             try
             {
@@ -123,6 +123,35 @@ namespace MiServicioWeb
                     respuesta.exito = false;
                 }
                 
+            }
+            catch (Exception x)
+            {
+                conexion.Close();
+            }
+            return JsonConvert.SerializeObject(respuesta);
+
+        }
+
+        public string MateriasProfesor(CP p)
+        {
+            string consulta = "SELECT A.IdAsignacion, M.Nombre as Materia FROM Asignacion as A INNER JOIN Materia AS M ON M.IdMateria = A.IdMateria WHERE A.IdCuatrimestre = "+p.Cuatrimestre+" AND A.IdProfesor = "+p.Profesor+"; ";
+            Respuesta respuesta = new Respuesta();
+            try
+            {
+                conexion.Open();
+                DataSet ds = QueryDataSet(consulta, conexion);
+                conexion.Close();
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    respuesta.exito = true;
+                    respuesta.html = ds.Tables[0];
+
+                }
+                else
+                {
+                    respuesta.exito = false;
+                }
+
             }
             catch (Exception x)
             {
