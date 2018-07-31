@@ -67,6 +67,52 @@ namespace MiServicioWeb
             return exito;
         }
 
+
+        public bool ModificarAsesoria(Asesoria a)
+        {
+            bool exito = false;
+            string consulta = "SELECT * FROM Asignacion as A INNER JOIN Horario as H on H.IdAsignacion= A.IdAsignacion INNER JOIN Hora AS Ho ON Ho.IdHora= H.IdHora WHERE A.IdProfesor=" + a.Idprofesor + " AND Ho.IdHora=" + a.Idhora + " AND H.IdDia=" + a.Dia + ";";
+            string consulta2 = "SELECT * FROM Asesorias as A INNER JOIN Hora as H on H.IdHora= A.IdHora WHERE A.IdAsignacion=" + a.Idasignacion + " AND H.IdHora=" + a.Idhora + " AND A.Dia=" + a.Dia + ";";
+            try
+            {
+                conexion.Open();
+                DataSet ds = QueryDataSet(consulta, conexion);
+                DataSet ds2 = QueryDataSet(consulta2, conexion);
+                if (ds.Tables[0].Rows.Count > 0 || ds2.Tables[0].Rows.Count > 0)
+                {
+                    conexion.Close();
+                    return false;
+                }
+                else
+                {
+                    SqlCommand comando = new SqlCommand();
+                    comando.Connection = conexion;
+                    comando.CommandText = "UPDATE Asesorias SET Cupo= "+a.Cupo+", IdHora= "+a.Idhora+", Dia="+a.Dia+" WHERE IdAsesoria="+a.Idasesoria+";";
+                    int validacion = comando.ExecuteNonQuery();
+
+                    if (validacion > 0)
+                    {
+                        exito = true;
+
+                    }
+                    else
+                    {
+                        conexion.Close();
+                        exito = false;
+                    }
+                }
+
+
+                conexion.Close();
+            }
+            catch (Exception x)
+            {
+                conexion.Close();
+            }
+
+            return exito;
+        }
+
         public double Operacion()
         {
             return 1 + 1;
@@ -164,7 +210,7 @@ namespace MiServicioWeb
         public string MH(Profesor p)
         {
             //ese profesor se reutilizo para asesoria
-            string AA = "SELECT * FROM Asesorias as A INNER JOIN AA as AA ON AA.IdAsesoria=A.IdAsesoria WHERE A.IdAsesoria="+p.idprofesor+"; ";
+            string AA = "SELECT * FROM Asesorias as A INNER JOIN AA as AA ON AA.IdAsesoria=A.IdAsesoria INNER JOIN Asignacion as Asig ON Asig.IdAsignacion = A.IdAsignacion WHERE A.IdAsesoria="+p.idprofesor+"; ";
 
             DataSet ds = null;
             Respuesta respuesta = new Respuesta();
@@ -227,6 +273,42 @@ namespace MiServicioWeb
                         exito = false;
                     }
                 }
+
+
+                conexion.Close();
+            }
+            catch (Exception x)
+            {
+                conexion.Close();
+            }
+
+            return exito;
+        }
+
+        public bool ModificarInscripcion(AA a)
+        {
+            bool exito = false;
+           
+            try
+            {
+                conexion.Open();
+                
+                    SqlCommand comando = new SqlCommand();
+                    comando.Connection = conexion;
+                    comando.CommandText = "UPDATE AA SET Nombre= '"+a.Nombre+"', Tema= '"+a.Tema+"', Matricula= "+a.Matricula+" WHERE IdAA="+a.Idasesoria+";";
+                    int validacion = comando.ExecuteNonQuery();
+
+                    if (validacion > 0)
+                    {
+                        exito = true;
+
+                    }
+                    else
+                    {
+                        conexion.Close();
+                        exito = false;
+                    }
+                
 
 
                 conexion.Close();

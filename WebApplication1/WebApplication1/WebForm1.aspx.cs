@@ -385,6 +385,7 @@ namespace WebApplication1
 
                         DropDownList9.Items.Add(listItem);
                         Hora.Items.Add(listItem);
+                        DropDownList20.Items.Add(listItem);
                     }
                 }
 
@@ -401,6 +402,7 @@ namespace WebApplication1
 
                         DropDownList8.Items.Add(listItem);
                         DropDownList14.Items.Add(listItem);
+                        DropDownList18.Items.Add(listItem);
                     }
                 }
 

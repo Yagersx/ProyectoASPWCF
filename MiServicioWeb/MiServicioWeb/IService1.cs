@@ -28,8 +28,20 @@ namespace MiServicioWeb
         [OperationContract]
         [WebInvoke(Method = "POST",
                     ResponseFormat = WebMessageFormat.Json,
+                    BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "ModificarAsesoria")]
+        bool ModificarAsesoria(Asesoria asesoria);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+                    ResponseFormat = WebMessageFormat.Json,
                     BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "AgregarInscripcion")]
         bool AgregarInscripcion(AA inscripcion);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST",
+                    ResponseFormat = WebMessageFormat.Json,
+                    BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "ModificarInscripcion")]
+        bool ModificarInscripcion(AA inscripcion);
 
         [OperationContract]
         [WebInvoke(Method = "POST",
@@ -196,6 +208,15 @@ namespace MiServicioWeb
         {
           get { return idprofesor; }
           set { idprofesor = value; }
+        }
+
+        int idasesoria;
+
+        [DataMember]
+        public int Idasesoria
+        {
+            get { return idasesoria; }
+            set { idasesoria = value; }
         }
 
         int idasignacion;

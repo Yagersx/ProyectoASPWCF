@@ -332,6 +332,89 @@
                     </div>
             </div>
         </div>
+        <div class="modal fade" tabindex="-1" role="dialog" id="modal-a">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Editar Asesoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>Cupo</label>
+                                                <input type="text" id="Cupo_e" value="" class="form-control"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Dia</label>
+                                                <asp:DropDownList ID="DropDownList18" runat="server" AutoPostBack="False" CssClass="form-control">
+                                                </asp:DropDownList>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label>Selecciona una Hora</label>
+                                                <asp:DropDownList ID="DropDownList20" runat="server" AutoPostBack="False" CssClass="form-control">
+                                                </asp:DropDownList>
+                                            </div>
+                    </div>
+                                            
+
+                    
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class=" btn btn-primary btn-block" id="btn-actualizar-a"> Guardar Asincrono con AJAX </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="modal-AA">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Editar Alumno</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                                                <label>Tema</label>
+                                                <input type="text" id="tema_e" value="" class="form-control"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Matricula</label>
+                                                <input type="text" id="matricula_e" value="" class="form-control"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>Nombre</label>
+                                                <input type="text" id="nombre_e" value="" class="form-control"/>
+                                            </div>
+                        
+                    </div>
+                                            
+
+                    
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class=" btn btn-primary btn-block" id="btn-actualizar-AA"> Guardar Asincrono con AJAX </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    
     </form>
 <script
   src="https://code.jquery.com/jquery-3.3.1.js"
@@ -348,6 +431,9 @@
         $(document).ready(function () {
 
             $('.clockpicker').clockpicker();
+
+            var IDAA = 0;
+            
 
             $('#btn-guardar').on('click', function (e) {
                 e.preventDefault();
@@ -511,10 +597,16 @@
                             console.log(elemento);
                             html += "<option value='" + elemento.IdAsesoria + "'>Dia: " + elemento.Dia1 + " De: " + elemento.HoraInicio + " a " + elemento.HoraFin + "</option>";
                         });
-
+                        
                         console.log(html);
                         $('#cmbAsesoria').html(html);
                         $('#cmbAsesoria').removeAttr('disabled', 'disabled');
+                        console.log(IDA);
+                        if (IDA != null || IDA != "") {
+                            $('#cmbAsesoria').val(IDA);
+                            IDA = "";
+                            console.log(IDA);
+                        }
                     }
                     else {
                         swal('Ups!', 'No hay asesorias para este profesor!', 'warning');
@@ -662,6 +754,8 @@
 
             });
 
+            var tblAA = "";
+            var IDA = 0;
 
             $('#cmbAsesoria').on('change', function (e) {
                 e.preventDefault();
@@ -677,19 +771,149 @@
                     data: p,
 	            })
                     .done(function (respuesta) {
+                        console.log(respuesta);
                       var json= JSON.parse(respuesta);
-                        var html = '<button class="btn btn-primary btn-block mb-4 mt-4" type="button" id="cancelar-asesoria" value="'+$('#cmbAsesoria').val()+'">Cancelar Asesoria</button><table class="table table-striped table-hover text-center" id="tbl"  width="100%"><thead class="thead-light"> <tr><th >IdAA</th><th >Matricula</th><th >Nombre</th><th >Tema</th><th>Accion</th></tr></thead><tbody>';
+                        var html = '<button class="btn btn-primary btn-block mb-4 mt-4" type="button" id="editar-asesoria" value="'+$('#cmbAsesoria').val()+'">Editar Asesoria</button><button class="btn btn-danger btn-block mb-4 mt-4" type="button" id="cancelar-asesoria" value="'+$('#cmbAsesoria').val()+'">Cancelar Asesoria</button><table class="table table-striped table-hover text-center" id="tbl"  width="100%"><thead class="thead-light"> <tr><th >IdAA</th><th >Matricula</th><th >Nombre</th><th >Tema</th><th>Accion</th></tr></thead><tbody>';
                         if (json!=null && json.exito==true)
                         {
                             json.html.forEach(function (elemento) {
-                                html += "<tr><td>" + elemento.IdAA + "</td><td>" + elemento.Matricula + "</td><td>" + elemento.Nombre + "</td><td>" + elemento.Tema + "</td><td><button type='button' class='btn btn-danger btn-eliminar-alumno' value='" + elemento.IdAA + "'>Eliminar</button></td></tr>";
+                                html += "<tr><td>" + elemento.IdAA + "</td><td>" + elemento.Matricula + "</td><td>" + elemento.Nombre + "</td><td>" + elemento.Tema + "</td><td><button type='button' class='btn btn-primary btn-editar-alumno' value='" + elemento.IdAA + "'>Editar</button><button type='button' class='btn btn-danger btn-eliminar-alumno' value='" + elemento.IdAA + "'>Eliminar</button></td></tr>";
 
                             });
                         }
 
                         html += "</table>";
                         $('#table').html(html);
-                        $('#tbl').DataTable();
+                        tblAA = $('#tbl').DataTable();
+
+
+                        $('#editar-asesoria').on('click', function (e) {
+                            e.preventDefault();
+                            IDA = this.value;
+                            $("#modal-a").modal('toggle');
+                        });
+
+                        $('#btn-actualizar-a').on('click', function (e) {
+                            e.preventDefault();
+                           
+                            swal({
+                              title: "¿Estas Seguro de Editar?",
+                              text: "Se hara una peticion Asincrona!",
+                              type: "info",
+                              showCancelButton: true,
+                              closeOnConfirm: false,
+                              showLoaderOnConfirm: true
+                            }, function () {
+
+                                setTimeout(function () {
+
+                                    var asesoria = new Object();
+                                    asesoria.Idcuatri = $('#DropDownList19').val();
+                                    asesoria.Idprofesor = $('#DropDownList16').val();
+                                    asesoria.Idasignacion = $('#cmbMateriaMA').val();
+                                    asesoria.Idasesoria = IDA;
+                                    asesoria.Cupo =$('#Cupo_e').val() ;
+                                    asesoria.Dia =$('#DropDownList18').val() ;
+                                    asesoria.Idhora = $('#DropDownList20').val();
+            
+                                    asesoria = JSON.stringify(asesoria);
+            
+                                    console.log(asesoria);
+
+                                    $.ajax({
+		                                url: 'http://localhost:49849/Service1.svc/ModificarAsesoria',
+                                        type: 'POST',
+                                        contentType: 'application/json; charset=utf-8',
+                                        dataType: 'json',
+                                        processData: true,
+		                                data: asesoria,
+	                                })
+	                                .done(function(respuesta) {
+                                        console.log(respuesta);
+
+	                                    if(respuesta==true){
+	                    
+                                            swal('Hurray!', 'Exito al Actualizar!', 'success');
+                                            $('#modal-a').modal('toggle');
+                                            $('#cmbMateriaMA').change();
+	                                    }
+                                        else
+                                        {
+	                                        swal('Espera!', 'Parece que ya existe en la BD o No se pudo Actualizar!', 'info');
+	                                    }
+	                                })
+                                    .fail(function (error) {
+                                    swal('Oh No!','Algo Ocurrio!','warning');
+		                            console.log(error);
+                                    });
+                                }, 2000);
+                                    
+                            });
+
+                        });
+
+                        $('.btn-editar-alumno').on('click', function (e) {
+                            e.preventDefault();
+                            IDAA = this.value;
+                            console.log("asd");
+                            $("#modal-AA").modal('toggle');
+                        });
+
+                        $('#btn-actualizar-AA').on('click', function (e) {
+                            e.preventDefault();
+
+                
+
+                            swal({
+                              title: "¿Estas Seguro de Editar?",
+                              text: "Se hara una peticion Asincrona!",
+                              type: "info",
+                              showCancelButton: true,
+                              closeOnConfirm: false,
+                              showLoaderOnConfirm: true
+                            }, function () {
+
+                                setTimeout(function () {
+                                    var asesoria = new Object();
+                                    asesoria.Idasesoria = IDAA;
+                                    asesoria.Matricula =$('#matricula_e').val() ;
+                                    asesoria.Nombre =$('#nombre_e').val() ;
+                                    asesoria.Tema =$('#tema_e').val() ;
+            
+                                    asesoria = JSON.stringify(asesoria);
+                                    console.log(asesoria);
+
+                                    $.ajax({
+		                                url: 'http://localhost:49849/Service1.svc/ModificarInscripcion',
+                                        type: 'POST',
+                                        contentType: 'application/json; charset=utf-8',
+                                        dataType: 'json',
+                                        processData: true,
+		                                data: asesoria,
+	                                })
+	                                .done(function(respuesta) {
+                                        console.log(respuesta);
+
+	                                    if(respuesta==true){
+	                    
+                                            swal('Hurray!', 'Exito al Actualizar!', 'success');
+                                            $('#modal-AA').modal('toggle');
+                                            $('cmbAsesoria').change();
+	                                    }
+                                        else
+                                        {
+	                                        swal('Espera!', 'Parece que ya existe en la BD o No se pudo Actualizar!', 'info');
+	                                    }
+	                                })
+                                    .fail(function (error) {
+                                    swal('Oh No!','Algo Ocurrio!','warning');
+		                            console.log(error);
+                                    });
+                                },2000);
+                                    
+                            });
+
+                        });
 
                         $('.btn-eliminar-alumno').on('click', function (e) {
                                 e.preventDefault();
@@ -736,6 +960,8 @@
 	                                })
                                     .done(function (respuesta) {
                                         console.log(respuesta);
+                                        $("#cmbMateriaMA").val($("#cmbMateriaMA option:first").val());
+                                        $('#cmbMateriaMA').attr('disabled', 'disabled');
                                         $("#DropDownList16").val($("#DropDownList16 option:first").val());
                                         $('#cmbAsesoria').attr('disabled', 'disabled');
                                         $('#cmbAsesoria').html("");
@@ -757,7 +983,14 @@
 
             });
 
-            
+            $('#v-pills-m_asesoria-tab').on('click', function () {
+                 $("#cmbMateriaMA").val($("#cmbMateriaMA option:first").val());
+                                        $('#cmbMateriaMA').attr('disabled', 'disabled');
+                                        $("#DropDownList16").val($("#DropDownList16 option:first").val());
+                                        $('#cmbAsesoria').attr('disabled', 'disabled');
+                                        $('#cmbAsesoria').html("");
+                                        $('#table').html("");
+            });
 
             
 
